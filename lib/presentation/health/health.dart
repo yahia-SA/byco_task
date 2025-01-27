@@ -1,5 +1,7 @@
 import 'package:byco_task/presentation/health/widget/cards_widget.dart';
 import 'package:byco_task/presentation/health/widget/goal_form.dart';
+import 'package:byco_task/presentation/health/widget/header_widget.dart';
+import 'package:byco_task/presentation/resources/appbar/appbar_widget.dart';
 import 'package:byco_task/presentation/resources/colors/colors.dart';
 import 'package:byco_task/presentation/resources/textsyle/textstyle.dart';
 import 'package:flutter/material.dart';
@@ -13,31 +15,10 @@ class HealthView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.skyWhite,
-      appBar: AppBar(
-        backgroundColor: AppColors.skyWhite,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        leading: SizedBox(
-          height: 12.h,
-          width: 6.w,
-          child: IconButton(
-            icon: Icon(
-              Icons.keyboard_arrow_left_rounded,
-              color: AppColors.inkDarkest,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        centerTitle: true,
-        title: Text(
-          "Health",
-          style: AppTextStyle.largeBold,
-        ),
+      appBar: AppBarWidget(
+        text: 'Health',
       ),
-      body: SizedBox(
-        width: 375.w,
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
@@ -46,48 +27,8 @@ class HealthView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 115.0.w,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40.r),
-                      ),
-                      border: Border.fromBorderSide(
-                        BorderSide(color: AppColors.skyLight, width: 1.w),
-                      ),
-                    ),
-                    child: Text(
-                      "Switch Program",
-                      style: AppTextStyle.tinyMedium
-                          .copyWith(color: AppColors.inkDarkest),
-                    ),
-                  ),
-                  Container(
-                    width: 79.w,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40.r),
-                      ),
-                      border: Border.fromBorderSide(
-                        BorderSide(color: AppColors.skyLight, width: 1.w),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.tune, color: AppColors.inkBase, size: 16.sp),
-                        Text(
-                          "Today",
-                          style: AppTextStyle.tinyMedium
-                              .copyWith(color: AppColors.inkDarkest),
-                        )
-                      ],
-                    ),
-                  ),
+                  HeaderBulider(text: 'Switch Program', width: 115.w),
+                  HeaderBulider(text: 'Today', width: 79.w, icon: Icons.tune),
                 ],
               ),
             ),
@@ -99,7 +40,7 @@ class HealthView extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: 130.w,
-                    // height: 158.h,
+                    height: 158.h,
                     child: Column(
                       children: [
                         Container(

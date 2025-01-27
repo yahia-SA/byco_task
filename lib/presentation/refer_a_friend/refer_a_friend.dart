@@ -1,4 +1,5 @@
 import 'package:byco_task/presentation/refer_a_friend/widget/step_widget.dart';
+import 'package:byco_task/presentation/resources/appbar/appbar_widget.dart';
 import 'package:byco_task/presentation/resources/colors/colors.dart';
 import 'package:byco_task/presentation/resources/routes/routes.dart';
 import 'package:byco_task/presentation/resources/textsyle/textstyle.dart';
@@ -16,29 +17,7 @@ class ReferAFriendView extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: AppColors.skyWhite,
-      appBar: AppBar(
-        backgroundColor: AppColors.skyWhite,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        leading: SizedBox(
-          width: 6.w,
-          height: 12.h,
-          child: IconButton(
-            icon: Icon(
-              Icons.keyboard_arrow_left_rounded,
-              color: AppColors.inkDarkest,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        centerTitle: true,
-        title: Text(
-          "Refer a friend",
-          style: AppTextStyle.largeBold,
-        ),
-      ),
+      appBar: AppBarWidget(text: 'Refer a friend'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,25 +80,34 @@ class ReferAFriendView extends StatelessWidget {
             SizedBox(height: 16.h),
 
             // Steps Section
-            StepWidget(
-              stepNumber: "1",
-              title: "Invite your friends",
-              imagePath: 'assets/images/undraw_add_friends_re_3xte1.svg',
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 1.w),
+            Semantics(
+              label: 'Step 1: Invite your friends',
               child: StepWidget(
-                stepNumber: "2",
-                title: "Friends enter your referral code",
-                imagePath: 'assets/images/undraw_referral_re_0aji_1.svg',
+                stepNumber: "1",
+                title: "Invite your friends",
+                imagePath: 'assets/images/undraw_add_friends_re_3xte1.svg',
               ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 1.w),
-              child: StepWidget(
-                stepNumber: "3",
-                title: "Get your rewards right away!",
-                imagePath: 'assets/images/Group_250.svg',
+              child: Semantics(
+                label: 'Step 2: Friends enter your referral code',
+                child: StepWidget(
+                  stepNumber: "2",
+                  title: "Friends enter your referral code",
+                  imagePath: 'assets/images/undraw_referral_re_0aji_1.svg',
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 1.w),
+              child: Semantics(
+                label: 'Step 3: Get your rewards right away',
+                child: StepWidget(
+                  stepNumber: "3",
+                  title: "Get your rewards right away!",
+                  imagePath: 'assets/images/Group_250.svg',
+                ),
               ),
             ),
             SizedBox(height: 32.h),
@@ -132,19 +120,25 @@ class ReferAFriendView extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.greenDarkest,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(48.r),
+                      child: Semantics(
+                        label: 'Invite Friends button',
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.greenDarkest,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(48.r),
+                            ),
+                            minimumSize: Size(double.infinity.w, 48.h),
                           ),
-                          minimumSize: Size(double.infinity.w, 48.h),
-                        ),
-                        child: Center(
-                          child: Text("Invite Friends",
-                              style: AppTextStyle.regularSemiBold
-                                  .copyWith(color: AppColors.skyWhite)),
+                          child: Center(
+                            child: Text(
+                              "Invite Friends",
+                              style: AppTextStyle.regularSemiBold.copyWith(
+                                color: AppColors.skyWhite,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -152,22 +146,26 @@ class ReferAFriendView extends StatelessWidget {
                       height: 12.h,
                     ),
                     Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routes.healthRoute);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.greenLightest,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(48.r),
+                      child: Semantics(
+                        label: 'Track your referrals button',
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, Routes.healthRoute);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.greenLightest,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(48.r),
+                            ),
+                            minimumSize: Size(double.infinity.w, 48.h),
                           ),
-                          minimumSize: Size(double.infinity.w, 48.h),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Track your referrals",
-                            style: AppTextStyle.regularSemiBold
-                                .copyWith(color: AppColors.greenDarkest),
+                          child: Center(
+                            child: Text(
+                              "Track your referrals",
+                              style: AppTextStyle.regularSemiBold.copyWith(
+                                color: AppColors.greenDarkest,
+                              ),
+                            ),
                           ),
                         ),
                       ),
