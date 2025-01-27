@@ -11,10 +11,6 @@ class ReferAFriendView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(
-      context,
-      designSize: const Size(375, 1089),
-    );
     return Scaffold(
       backgroundColor: AppColors.skyWhite,
       appBar: AppBarWidget(text: 'Refer a friend'),
@@ -22,62 +18,53 @@ class ReferAFriendView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 24.w),
-              child: SizedBox(
-                width: 323.w,
-                height: 146.h,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: 323.w,
-                      height: 92.h,
-                      child: RichText(
-                        text: TextSpan(
+            Container(
+              padding: EdgeInsets.fromLTRB(24.w, 19.h, 0.w, 16.h),
+              width: 323.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
                           text: "30% off for you. 30% off for your friends!\n",
                           style: AppTextStyle.regularSemiBold
                               .copyWith(color: AppColors.inkDarkest),
-                          children: [
-                            TextSpan(
-                              text:
-                                  "Invite friends and get 30% off your next ride up to 20EGP. They’ll also enjoy 30% off their first ride as well!\n",
-                              style: AppTextStyle.smallMedium
-                                  .copyWith(color: AppColors.inkLight),
-                            ),
-                          ],
                         ),
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    SizedBox(
-                      width: 323.w,
-                      height: 36.h,
-                      child: RichText(
-                        text: TextSpan(
-                          text: "*Offer valid only for new users\n",
-                          style: AppTextStyle.tinyMedium
+                        TextSpan(
+                          text:
+                              "Invite friends and get 30% off your next ride up to 20EGP. They’ll also enjoy 30% off their first ride as well!",
+                          style: AppTextStyle.smallMedium
                               .copyWith(color: AppColors.inkLight),
-                          children: [
-                            TextSpan(
-                              text: "Terms and Conditions",
-                              style: AppTextStyle.tinyMedium.copyWith(
-                                  color: AppColors.greenBase,
-                                  decoration: TextDecoration.underline),
-                            ),
-                            TextSpan(
-                              text: " apply",
-                              style: AppTextStyle.tinyMedium
-                                  .copyWith(color: AppColors.inkDarkest),
-                            ),
-                          ],
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 8.h),
+                  RichText(
+                    text: TextSpan(
+                      text: "*Offer valid only for new users\n",
+                      style: AppTextStyle.tinyMedium
+                          .copyWith(color: AppColors.inkLight),
+                      children: [
+                        TextSpan(
+                          text: "Terms and Conditions",
+                          style: AppTextStyle.tinyMedium.copyWith(
+                              color: AppColors.greenBase,
+                              decoration: TextDecoration.underline),
+                        ),
+                        TextSpan(
+                          text: " apply",
+                          style: AppTextStyle.tinyMedium
+                              .copyWith(color: AppColors.inkDarkest),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 16.h),
 
             // Steps Section
             Semantics(
@@ -114,64 +101,74 @@ class ReferAFriendView extends StatelessWidget {
             // Buttons
             Padding(
               padding: EdgeInsets.only(left: 22.0.w, right: 26.w),
-              child: SizedBox(
-                width: 327.w, // width
-                height: 108.h, // height
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Semantics(
-                        label: 'Invite Friends button',
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.greenDarkest,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48.r),
-                            ),
-                            minimumSize: Size(double.infinity.w, 48.h),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Invite Friends",
-                              style: AppTextStyle.regularSemiBold.copyWith(
-                                color: AppColors.skyWhite,
-                              ),
-                            ),
+              child: Column(
+                children: [
+                  Semantics(
+                    label: 'Invite Friends button',
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Alert Dialog"),
+                                content: Text("This is a simple alert dialog."),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      // Close the dialog
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.greenDarkest,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(48.r),
+                        ),
+                        minimumSize: Size(double.infinity.w, 48.h),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Invite Friends",
+                          style: AppTextStyle.regularSemiBold.copyWith(
+                            color: AppColors.skyWhite,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    Expanded(
-                      child: Semantics(
-                        label: 'Track your referrals button',
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.healthRoute);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.greenLightest,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(48.r),
-                            ),
-                            minimumSize: Size(double.infinity.w, 48.h),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Track your referrals",
-                              style: AppTextStyle.regularSemiBold.copyWith(
-                                color: AppColors.greenDarkest,
-                              ),
-                            ),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Semantics(
+                    label: 'Track your referrals button',
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.healthRoute);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.greenLightest,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(48.r),
+                        ),
+                        minimumSize: Size(double.infinity.w, 48.h),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Track your referrals",
+                          style: AppTextStyle.regularSemiBold.copyWith(
+                            color: AppColors.greenDarkest,
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 72.h),

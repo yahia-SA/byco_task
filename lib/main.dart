@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 1089),
       child: MaterialApp(
         title: 'Yahia - Flutter Task Submission',
         debugShowCheckedModeBanner: false,

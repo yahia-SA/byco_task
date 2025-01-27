@@ -29,10 +29,12 @@ class HeaderBulider extends StatelessWidget {
         ),
       ),
       child: icon == null
-          ? Text(
-              text,
-              style:
-                  AppTextStyle.tinyMedium.copyWith(color: AppColors.inkDarkest),
+          ? Center(
+              child: Text(
+                text,
+                style: AppTextStyle.tinyMedium
+                    .copyWith(color: AppColors.inkDarkest),
+              ),
             )
           : Row(
               mainAxisSize: MainAxisSize.min,

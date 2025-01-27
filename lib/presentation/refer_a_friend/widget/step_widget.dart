@@ -24,45 +24,40 @@ class StepWidget extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(left: 27.w),
-          child: SizedBox(
-            height: 64.h,
-            child: Row(
-              children: [
-                // Step Number & Text
-                Semantics(
-                  label: 'Step $stepNumber: $title',
-                  child: Container(
-                    width: 64.w,
-                    height: 64.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.skyWhite,
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 1),
-                          blurRadius: 20,
-                          spreadRadius: 1,
-                          color: AppColors.skyLight,
-                        ),
-                      ],
+          child: Row(
+            children: [
+              // Step Number & Text
+              Container(
+                width: 64.w,
+                height: 64.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.skyWhite,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 1),
+                      blurRadius: 20,
+                      spreadRadius: 1,
+                      color: AppColors.skyLight,
                     ),
-                    child: Center(
-                      child: Text(
-                        stepNumber,
-                        style: AppTextStyle.largeBold,
-                      ),
-                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    stepNumber,
+                    style: AppTextStyle.largeBold,
                   ),
                 ),
-                SizedBox(
-                    width: 16.w), // Add spacing between the circle and text
-                Text(
+              ),
+              SizedBox(width: 16.w), // Add spacing between the circle and text
+              Expanded(
+                child: Text(
                   title,
                   style: AppTextStyle.regularMedium
                       .copyWith(color: AppColors.inkDarkest),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         Stack(

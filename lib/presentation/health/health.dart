@@ -13,6 +13,10 @@ class HealthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 812),
+    );
     return Scaffold(
       backgroundColor: AppColors.skyWhite,
       appBar: AppBarWidget(
@@ -21,9 +25,8 @@ class HealthView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              width: 326.5.w,
-              height: 32.0.h,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 23.5.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,138 +41,123 @@ class HealthView extends StatelessWidget {
               height: 179.h,
               child: Column(
                 children: [
-                  SizedBox(
-                    width: 130.w,
-                    height: 158.h,
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 130.w,
-                          height: 130.h,
-                          decoration: BoxDecoration(
-                            color: AppColors.greenLightest,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.local_fire_department,
-                                size: 52.sp,
-                                color: AppColors.greenDarkest,
-                              ),
-                              SizedBox(height: 8.h),
-                              Text("13500",
-                                  style: AppTextStyle.regularBold.copyWith(
-                                    color: AppColors.greenDarkest,
-                                  ) // Green color
-                                  ),
-                            ],
-                          ),
+                  Column(
+                    children: [
+                      Container(
+                        width: 130.w,
+                        height: 130.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.greenLightest,
+                          shape: BoxShape.circle,
                         ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "Calories",
-                              style: AppTextStyle.largeBold.copyWith(
-                                color: AppColors.inkLight,
-                              ),
-                            ),
-                            SizedBox(width: 4.w),
                             Icon(
-                              Icons.info_outline,
-                              size: 16.sp,
-                              color: AppColors.inkLight,
+                              Icons.local_fire_department,
+                              size: 52.sp,
+                              color: AppColors.greenDarkest,
                             ),
+                            SizedBox(height: 8.h),
+                            Text("13500",
+                                style: AppTextStyle.regularBold.copyWith(
+                                  color: AppColors.greenDarkest,
+                                ) // Green color
+                                ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Calories",
+                            style: AppTextStyle.largeBold.copyWith(
+                              color: AppColors.inkLight,
+                            ),
+                          ),
+                          SizedBox(width: 4.w),
+                          Icon(
+                            Icons.info_outline,
+                            size: 16.sp,
+                            color: AppColors.inkLight,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 23.5.w),
-              child: SizedBox(
-                width: 328.w,
-                height: 112.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Cards(
-                        value: '60',
-                        lable: 'Km',
-                        icon: SvgPicture.asset(
-                          'assets/images/Distance.svg',
-                          width: 36.w,
-                          height: 37.h,
-                        )),
-                    Cards(
-                      value: '10',
-                      lable: 'Hr',
-                      icon: Icon(
-                        Icons.watch_later_outlined,
-                        size: 36.sp,
-                        color: AppColors.greenDarkest,
-                      ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Cards(
+                      value: '60',
+                      lable: 'Km',
+                      icon: SvgPicture.asset(
+                        'assets/images/Distance.svg',
+                        width: 36.w,
+                        height: 37.h,
+                      )),
+                  Cards(
+                    value: '10',
+                    lable: 'Hr',
+                    icon: Icon(
+                      Icons.watch_later_outlined,
+                      size: 36.sp,
+                      color: AppColors.greenDarkest,
                     ),
-                    Cards(
-                      value: '20',
-                      lable: 'Km/h',
-                      icon: Icon(
-                        Icons.speed,
-                        size: 36.sp,
-                        color: AppColors.greenDarkest,
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  Cards(
+                    value: '20',
+                    lable: 'Km/h',
+                    icon: Icon(
+                      Icons.speed,
+                      size: 36.sp,
+                      color: AppColors.greenDarkest,
+                    ),
+                  )
+                ],
               ),
             ),
             SizedBox(
               height: 24.h,
             ),
             Container(
-              width: 375.w,
+              width: double.infinity.w,
               height: 5.h,
               color: AppColors.inkLighter,
             ),
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: 24.0.w, vertical: 24.0.h),
-              child: SizedBox(
-                width: 327.w,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 24.h,
-                      width: 327.w,
-                      child: Center(
-                        child: Text(
-                          'Create a New goal',
-                          style: AppTextStyle.regularBold
-                              .copyWith(color: AppColors.inkDarkest),
-                        ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 24.h,
+                    width: 327.w,
+                    child: Center(
+                      child: Text(
+                        'Create a New goal',
+                        style: AppTextStyle.regularBold
+                            .copyWith(color: AppColors.inkDarkest),
                       ),
                     ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    SizedBox(
-                      width: 327.w,
-                      height: 224.h,
-                      child: GoalForm(),
-                    ),
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  GoalForm(),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                ],
               ),
             )
           ],
